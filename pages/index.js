@@ -1,11 +1,12 @@
 import Head from 'next/head'
 import Image from 'next/image'
+import useIsIOS from '../components/useIsIOS'
 
 
 export default function Home() {
 
 
-
+  const { prompt } = useIsIOS();
 
   return (
     <div>
@@ -16,6 +17,7 @@ export default function Home() {
       </Head>
 
       page index.js
+      <p>{prompt}</p>
 
 
 
