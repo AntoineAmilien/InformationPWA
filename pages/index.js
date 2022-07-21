@@ -1,12 +1,22 @@
 import Head from 'next/head'
 import Image from 'next/image'
-import useIsIOS from '../components/useIsIOS'
-
-
+import { BrowserView, MobileView, isBrowser, isMobile, isIOS, isSafari } from 'react-device-detect';
 export default function Home() {
 
-
-  const { prompt } = useIsIOS();
+  const renderContent = () => {
+    if (isBrowser) {
+      return <div> Browser</div>
+    }
+    if (isMobile) {
+      return <div> mobile</div>
+    }
+    if (isIOS) {
+      return <div> IOS</div>
+    }
+    if (isSafari) {
+      return <div> Safari</div>
+    }
+  }
 
   return (
     <div>
@@ -17,9 +27,8 @@ export default function Home() {
       </Head>
 
       page index.js
-      <p>la {prompt}</p>
 
-
+      {renderContent()}
 
 
       <p>sss</p>
