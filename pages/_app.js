@@ -1,6 +1,11 @@
+
+import InstallPWA from "../components/InstallPWA.js"
 function MyApp({ Component, pageProps }) {
   return (
-    <Component {...pageProps} />
+    <>
+      <InstallPWA />
+      <Component {...pageProps} />
+    </>
   )
 }
 

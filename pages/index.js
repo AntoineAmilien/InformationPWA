@@ -1,7 +1,12 @@
 import Head from 'next/head'
 import Image from 'next/image'
 
+
 export default function Home() {
+
+
+
+
   return (
     <div>
       <Head>
@@ -10,7 +15,12 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
+      page index.js
 
+
+
+
+      <p>sss</p>
     </div>
   )
 }
