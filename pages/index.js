@@ -17,7 +17,7 @@ export default function Home() {
       </Head>
 
       page index.js
-      <p>{prompt}</p>
+      <p>la {prompt}</p>
 
 
 
