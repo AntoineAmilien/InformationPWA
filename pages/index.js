@@ -11,7 +11,6 @@ export default function Home() {
 
   useEffect(() => {
     if (isBrowser) {
-      console.log("iciiiii")
       setIsBrowser(true)
     }
     if (isMobile) {

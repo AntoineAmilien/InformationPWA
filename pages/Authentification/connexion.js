@@ -2,8 +2,33 @@ import React, { useState } from 'react';
 import Image from 'next/image'
 import FormConnexion from '../../components/authentification/formConnexion.js'
 import FormInscription from '../../components/authentification/formInscription'
+import { useRouter } from "next/router";
+import { getSession } from "next-auth/react"
+import { getCsrfToken } from "next-auth/react"
+
+const errors = {
+    Signin: "Essayez de vous connecter avec un autre compte.",
+    OAuthSignin: "Essayez de vous connecter avec un autre compte.",
+    OAuthCallback: "Essayez de vous connecter avec un autre compte.",
+    OAuthCreateAccount: "Essayez de vous connecter avec un autre compte.",
+    EmailCreateAccount: "Essayez de vous connecter avec un autre compte.",
+    Callback: "Essayez de vous connecter avec un autre compte.",
+    OAuthAccountNotLinked:
+        "Pour confirmer votre identité, connectez-vous avec le même compte que vous avez utilisé à l'origine.",
+    EmailSignin: "Vérifiez votre adresse e-mail.",
+    CredentialsSignin:
+        "La connexion a échoué. Vérifiez que les détails que vous avez fournis sont corrects.",
+    SessionRequired: "Le contenu de cette page nécessite que vous soyez connecté",
+    default: "Une erreur c'est produite.",
+};
+
 const connexion = () => {
+
+    const { error } = useRouter().query;
+    const errorMessage = error && (errors[error] ?? errors.default);
+
     const [connexionInscription, setConnexionInscription] = useState("CONNEXION")
+
     return (
 
         <div className='flex flex-col min-h-screen justify-center items-center'>
@@ -22,7 +47,8 @@ const connexion = () => {
                 <div class="mt-3">
 
                     {connexionInscription == "CONNEXION" ? <>
-                        <FormConnexion />
+                        <FormConnexion erreurMessage={errorMessage} />
+                        <p className="font-medium text-red-500"> {errorMessage} </p>
                         <div class="relative my-4">
                             <div class="absolute inset-0 flex items-center">
                                 <div class="w-full border-t border-gray-300"></div>
@@ -50,9 +76,6 @@ const connexion = () => {
                         </div></>}
 
 
-
-
-
                 </div>
 
             </div>
@@ -62,5 +85,25 @@ const connexion = () => {
 
     );
 };
+
+export async function getServerSideProps(context) {
+    const session = await getSession(context)
+
+    if (session) {
+        return {
+            redirect: {
+                permanent: false,
+                destination: "/dejaCo",
+            },
+            props: {
+                csrfToken: await getCsrfToken(context),
+            },
+        };
+    }
+
+    return {
+        props: {},
+    };
+}
 
 export default connexion;
