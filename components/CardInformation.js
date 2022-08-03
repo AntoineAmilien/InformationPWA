@@ -31,11 +31,11 @@ const CardInformation = (props) => {
     }
 
     return (
-        <div class="card bg-base-100 shadow-xl bg-info">
-            <div class={`card-body ` + renderSwitchBgColor(nature)}>
-                <div class="card-actions flex justify-between items-center">
+        <div className="card bg-base-100 shadow-xl bg-info">
+            <div className={`card-body ` + renderSwitchBgColor(nature)}>
+                <div className="card-actions flex justify-between items-center">
                     {renderSwitchIcon(nature)}
-                    <h2 class="card-title text-sm">{applicationNom}</h2>
+                    <h2 className="card-title text-sm">{applicationNom}</h2>
                 </div>
 
                 <p>{texte}</p>

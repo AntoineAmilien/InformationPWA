@@ -23,7 +23,7 @@ const errors = {
     default: "Une erreur c'est produite.",
 };
 
-const connexion = () => {
+const Connexion = () => {
 
     const { error } = useRouter().query;
     const errorMessage = error && (errors[error] ?? errors.default);
@@ -34,7 +34,7 @@ const connexion = () => {
 
         <div className='flex flex-col min-h-screen justify-center items-center p-4'>
 
-            <div class="p-5 w-96 bg-white rounded-xl drop-shadow-xl">
+            <div className="p-5 w-96 bg-white rounded-xl drop-shadow-xl">
                 <div className=' w-full flex justify-center'>
                     <Image
                         src="/nxo-fayat.png"
@@ -44,38 +44,38 @@ const connexion = () => {
                     />
                 </div>
 
-                <h2 class="text-3xl font-semibold text-neutral-600 text-left mt-4">Centre de notifications <br /> Bienvenue !</h2>
-                <InstallPWA message="Installer la version mobile" sytleClass="btn-primary btn-link text-left pt-4" />
+                <h2 className="text-3xl font-semibold text-neutral-600 text-left mt-4">Centre de notifications <br /> Bienvenue !</h2>
+                <InstallPWA message="Installer la version mobile" sytleclassName="btn-primary btn-link text-left pt-4" />
 
-                <div class="">
+                <div className="">
 
                     {connexionInscription == "CONNEXION" ? <>
                         <FormConnexion erreurMessage={errorMessage} />
                         <p className="font-medium text-red-500"> {errorMessage} </p>
-                        <div class="relative my-4">
-                            <div class="absolute inset-0 flex items-center">
-                                <div class="w-full border-t border-gray-300"></div>
+                        <div className="relative my-4">
+                            <div className="absolute inset-0 flex items-center">
+                                <div className="w-full border-t border-gray-300"></div>
                             </div>
-                            <div class="relative flex justify-center text-sm">
-                                <span class="px-2 text-neutral-600 bg-white"> Pas encore inscrit ? </span>
+                            <div className="relative flex justify-center text-sm">
+                                <span className="px-2 text-neutral-600 bg-white"> Pas encore inscrit ? </span>
                             </div>
                         </div>
 
                         <div>
-                            <button onClick={() => setConnexionInscription("INSCRIPTION")} class="btn btn-primary btn-link w-full">Inscription</button>
+                            <button onClick={() => setConnexionInscription("INSCRIPTION")} className="btn btn-primary btn-link w-full">Inscription</button>
                         </div>
                     </> : <>
                         <FormInscription />
-                        <div class="relative my-4">
-                            <div class="absolute inset-0 flex items-center">
-                                <div class="w-full border-t border-gray-300"></div>
+                        <div className="relative my-4">
+                            <div className="absolute inset-0 flex items-center">
+                                <div className="w-full border-t border-gray-300"></div>
                             </div>
-                            <div class="relative flex justify-center text-sm">
-                                <span class="px-2 text-neutral-600 bg-white"> Déja inscrit ? </span>
+                            <div className="relative flex justify-center text-sm">
+                                <span className="px-2 text-neutral-600 bg-white"> Déja inscrit ? </span>
                             </div>
                         </div>
                         <div>
-                            <button onClick={() => setConnexionInscription("CONNEXION")} class="btn btn-primary btn-link w-full">Je me connecte</button>
+                            <button onClick={() => setConnexionInscription("CONNEXION")} className="btn btn-primary btn-link w-full">Je me connecte</button>
                         </div></>}
                 </div>
             </div>
@@ -106,4 +106,4 @@ export async function getServerSideProps(context) {
     };
 }
 
-export default connexion;
+export default Connexion;

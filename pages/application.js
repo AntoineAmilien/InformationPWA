@@ -3,7 +3,7 @@ import Layout from '../components/layout';
 import { useSession } from "next-auth/react"
 import { getSession } from "next-auth/react";
 
-const application = (props) => {
+const Application = (props) => {
     const { data: session, status } = useSession()
 
     if (status === "loading") {
@@ -18,7 +18,7 @@ const application = (props) => {
     );
 };
 
-application.getLayout = function getLayout(page) {
+Application.getLayout = function getLayout(page) {
     return (
         <Layout titlePage="Applications demandées">
             {page}
@@ -46,4 +46,4 @@ export async function getServerSideProps(context) {
     }
 }
 
-export default application;
+export default Application;

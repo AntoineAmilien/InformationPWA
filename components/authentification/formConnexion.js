@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { signIn } from "next-auth/react"
 import { useForm } from 'react-hook-form';
 
-const formConnexion = (props) => {
+const FormConnexion = (props) => {
     const [errorMessage, setErrorMessage] = useState(props.errorMessage);
 
     const { register, handleSubmit, formState: { errors } } = useForm();
@@ -19,26 +19,26 @@ const formConnexion = (props) => {
 
     return (
         <div>
-            <form onSubmit={handleSubmit(soumissionFormulaire)} class="space-y-4">
-                <div class="form-control w-full">
-                    <label class="label">
-                        <span class="label-text">Email</span>
+            <form onSubmit={handleSubmit(soumissionFormulaire)} className="space-y-4">
+                <div className="form-control w-full">
+                    <label className="label">
+                        <span className="label-text">Email</span>
                     </label>
-                    <input type="text" {...register("Email", { required: true })} placeholder="Email" class="input input-bordered w-full" />
+                    <input type="text" {...register("Email", { required: true })} placeholder="Email" className="input input-bordered w-full" />
                     {errors.Email && <p className="text-red-500 font-light text-sm px-1">Email obligatoire.</p>}
                 </div>
 
-                <div class="form-control w-full">
-                    <label class="label">
-                        <span class="label-text">Mot de passe</span>
+                <div className="form-control w-full">
+                    <label className="label">
+                        <span className="label-text">Mot de passe</span>
                     </label>
-                    <input type="password" {...register("Password", { required: true })} placeholder="Mot de passe" class="input input-bordered w-full" />
+                    <input type="password" {...register("Password", { required: true })} placeholder="Mot de passe" className="input input-bordered w-full" />
                     {errors.Password && <p className="text-red-500 font-light text-sm px-1">Mot de passe obligatoire.</p>}
                 </div>
 
                 <p className="font-medium text-red-500"> {errorMessage} </p>
 
-                <button class="btn btn-primary w-full">Connexion</button>
+                <button className="btn btn-primary w-full">Connexion</button>
 
             </form>
         </div>
@@ -49,4 +49,4 @@ const formConnexion = (props) => {
 
 
 
-export default formConnexion;
+export default FormConnexion;

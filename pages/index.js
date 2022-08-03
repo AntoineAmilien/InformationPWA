@@ -30,12 +30,12 @@ export default function Home(props) {
 
   return (
     <div>
-      <div class="grid xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 grid-cols-1 p-4 gap-4">
-        <div class="card bg-base-100 shadow-xl">
-          <div class="card-body">
-            <div class="card-actions flex justify-between items-center">
+      <div className="grid xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 grid-cols-1 p-4 gap-4">
+        <div className="card bg-base-100 shadow-xl">
+          <div className="card-body">
+            <div className="card-actions flex justify-between items-center">
               <p>Recherche : </p>
-              <select class="select select-bordered w-full max-w-xs" onChange={(e) => { filterByApp(e.target.value) }}>
+              <select className="select select-bordered w-full max-w-xs" onChange={(e) => { filterByApp(e.target.value) }}>
                 <option disabled selected>Filtrer par application ?</option>
                 <option value={"Toutes"}>Toutes</option>
                 {session.user.Applications.map((application, index) => {

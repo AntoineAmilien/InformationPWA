@@ -3,7 +3,7 @@ import { useForm } from 'react-hook-form';
 import axios from 'axios';
 import { signIn } from "next-auth/react"
 
-const formInscription = () => {
+const FormInscription = () => {
 
     const { register, handleSubmit, formState: { errors } } = useForm();
     const [errorMessage, setErrorMessage] = useState("")
@@ -50,71 +50,71 @@ const formInscription = () => {
 
     return (
         <div>
-            <form onSubmit={handleSubmit(soumissionFormulaire)} class="space-y-4">
-                <div class="form-control w-full">
-                    <label class="label">
-                        <span class="label-text">Nom *:</span>
+            <form onSubmit={handleSubmit(soumissionFormulaire)} className="space-y-4">
+                <div className="form-control w-full">
+                    <label className="label">
+                        <span className="label-text">Nom *:</span>
                     </label>
-                    <input type="text" {...register("Nom", { required: true })} placeholder="Nom" class="input input-bordered w-full" />
+                    <input type="text" {...register("Nom", { required: true })} placeholder="Nom" className="input input-bordered w-full" />
                     {errors.Nom && <p className="text-red-500 font-light text-sm px-1">Nom obligatoire</p>}
                 </div>
 
-                <div class="form-control w-full">
-                    <label class="label">
-                        <span class="label-text">Prenom *:</span>
+                <div className="form-control w-full">
+                    <label className="label">
+                        <span className="label-text">Prenom *:</span>
                     </label>
-                    <input type="text" {...register("Prenom", { required: true })} placeholder="Prenom" class="input input-bordered w-full" />
+                    <input type="text" {...register("Prenom", { required: true })} placeholder="Prenom" className="input input-bordered w-full" />
                     {errors.Prenom && <p className="text-red-500 font-light text-sm px-1">Prenom obligatoire</p>}
                 </div>
 
 
-                <div class="form-control w-full">
-                    <label class="label">
-                        <span class="label-text">Username *:</span>
+                <div className="form-control w-full">
+                    <label className="label">
+                        <span className="label-text">Username *:</span>
                     </label>
-                    <input type="text" {...register("Username", { required: true })} placeholder="Username" class="input input-bordered w-full" />
+                    <input type="text" {...register("Username", { required: true })} placeholder="Username" className="input input-bordered w-full" />
                     {errors.Username && <p className="text-red-500 font-light text-sm px-1">Username obligatoire</p>}
                 </div>
 
 
-                <div class="form-control w-full">
-                    <label class="label">
-                        <span class="label-text">Societe *:</span>
+                <div className="form-control w-full">
+                    <label className="label">
+                        <span className="label-text">Societe *:</span>
                     </label>
-                    <input type="text" {...register("Societe", { required: true })} placeholder="Societe" class="input input-bordered w-full" />
+                    <input type="text" {...register("Societe", { required: true })} placeholder="Societe" className="input input-bordered w-full" />
                     {errors.Societe && <p className="text-red-500 font-light text-sm px-1">Societe obligatoire</p>}
                 </div>
 
-                <div class="form-control w-full">
-                    <label class="label">
-                        <span class="label-text">Email</span>
+                <div className="form-control w-full">
+                    <label className="label">
+                        <span className="label-text">Email</span>
                     </label>
-                    <input type="email" {...register("Email", { required: true })} placeholder="Email" class="input input-bordered w-full" />
+                    <input type="email" {...register("Email", { required: true })} placeholder="Email" className="input input-bordered w-full" />
                     {errors.Email && <p className="text-red-500 font-light text-sm px-1">Email obligatoire</p>}
                 </div>
 
-                <div class="form-control w-full">
-                    <label class="label">
-                        <span class="label-text">Mot de passe</span>
+                <div className="form-control w-full">
+                    <label className="label">
+                        <span className="label-text">Mot de passe</span>
                     </label>
-                    <input type="password" {...register("MotDePasse", { required: true })} placeholder="Mot de passe" class="input input-bordered w-full" />
+                    <input type="password" {...register("MotDePasse", { required: true })} placeholder="Mot de passe" className="input input-bordered w-full" />
                     {errors.MotDePasse && <p className="text-red-500 font-light text-sm px-1">Mot de passe obligatoire</p>}
                 </div>
 
-                <div class="form-control w-full">
-                    <label class="label">
-                        <span class="label-text">Confirmation du mot de passe</span>
+                <div className="form-control w-full">
+                    <label className="label">
+                        <span className="label-text">Confirmation du mot de passe</span>
                     </label>
-                    <input type="password" {...register("ConfirmationMotDePasse", { required: true })} placeholder="Confirmation du mot de passe" class="input input-bordered w-full" />
+                    <input type="password" {...register("ConfirmationMotDePasse", { required: true })} placeholder="Confirmation du mot de passe" className="input input-bordered w-full" />
                     {errors.ConfirmationMotDePasse && <p className="text-red-500 font-light text-sm px-1">Confirmation du mot de passe obligatoire</p>}
                 </div>
 
                 <p className="text-red-500 font-light text-sm px-1">{errorMessage}</p>
 
-                <input type="submit" value="S'inscrire" class="btn btn-primary w-full" />
+                <input type="submit" value="S'inscrire" className="btn btn-primary w-full" />
             </form>
         </div>
     );
 };
 
-export default formInscription;
+export default FormInscription;
