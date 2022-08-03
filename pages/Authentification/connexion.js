@@ -5,6 +5,7 @@ import FormInscription from '../../components/authentification/formInscription'
 import { useRouter } from "next/router";
 import { getSession } from "next-auth/react"
 import { getCsrfToken } from "next-auth/react"
+import InstallPWA from '../../components/InstallPWA.js';
 
 const errors = {
     Signin: "Essayez de vous connecter avec un autre compte.",
@@ -31,7 +32,8 @@ const connexion = () => {
 
     return (
 
-        <div className='flex flex-col min-h-screen justify-center items-center'>
+        <div className='flex flex-col min-h-screen justify-center items-center p-4'>
+
             <div class="p-5 w-96 bg-white rounded-xl drop-shadow-xl">
                 <div className=' w-full flex justify-center'>
                     <Image
@@ -43,8 +45,9 @@ const connexion = () => {
                 </div>
 
                 <h2 class="text-3xl font-semibold text-neutral-600 text-left mt-4">Centre de notifications <br /> Bienvenue !</h2>
+                <InstallPWA message="Installer la version mobile" sytleClass="btn-primary btn-link text-left pt-4" />
 
-                <div class="mt-3">
+                <div class="">
 
                     {connexionInscription == "CONNEXION" ? <>
                         <FormConnexion erreurMessage={errorMessage} />
@@ -74,10 +77,7 @@ const connexion = () => {
                         <div>
                             <button onClick={() => setConnexionInscription("CONNEXION")} class="btn btn-primary btn-link w-full">Je me connecte</button>
                         </div></>}
-
-
                 </div>
-
             </div>
         </div>
 
@@ -93,7 +93,7 @@ export async function getServerSideProps(context) {
         return {
             redirect: {
                 permanent: false,
-                destination: "/dejaCo",
+                destination: "/",
             },
             props: {
                 csrfToken: await getCsrfToken(context),

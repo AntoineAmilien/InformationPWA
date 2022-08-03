@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 
 
-const InstallPWA = () => {
+const InstallPWA = (props) => {
+    const { sytleClass, message } = props
     const [supportsPWA, setSupportsPWA] = useState(false);
     const [promptInstall, setPromptInstall] = useState(null);
     const [viewButton, setViewButton] = useState(true);
@@ -31,13 +32,10 @@ const InstallPWA = () => {
     return (
         <>
             {viewButton ? <button
-                className="link-button"
-                id="setup_button"
-                aria-label="Install app"
-                title="Install app"
+                className={sytleClass || "btn btn-outline btn-primary"}
                 onClick={onClick}
             >
-                Install
+                {message || "Installer l'application"}
             </button> : <></>}
         </>
     );

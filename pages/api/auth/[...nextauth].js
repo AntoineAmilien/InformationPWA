@@ -1,5 +1,6 @@
 import NextAuth from "next-auth"
 import CredentialsProvider from "next-auth/providers/credentials";
+import axios from 'axios';
 
 export default NextAuth({
     callbacks: {
@@ -22,13 +23,31 @@ export default NextAuth({
                 password: { label: "Password", type: "password" }
             },
             async authorize(credentials, req) {
-
-                //search
                 try {
-                    const user = { id: 1, nom: "LeNom", prenom: "LePrenom", username: "LeUsername", email: "LeEmail@nxo.eu" }
-                    return user;
+
+                    if (credentials == null) return null;
+
+                    const dataPourApiConnexionStrapi = {
+                        "identifier": credentials.email,
+                        "password": credentials.password
+                    }
+
+                    const { jwt } = await axios.post('http://localhost:1337/api/auth/local', dataPourApiConnexionStrapi).then(async res => {
+                        return res.data
+                    })
+
+
+                    const userPopulate = await axios.get('http://localhost:1337/api/users/me?populate=*', {
+                        headers: {
+                            'Authorization': 'Bearer ' + jwt
+                        }
+                    }).then(async res => {
+                        return res.data
+                    })
+
+                    return { ...userPopulate, jwt };
                 } catch (error) {
-                    console.error("Une erreur c'est produite pendant le SEARCH sur le LDAP ou pendant l'analyse du role : " + JSON.stringify(error))
+                    console.error("Une erreur c'est produite pendant la connexion : " + JSON.stringify(error))
                     return null
                 }
 
